@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Registration received — ACS Dialogue</title>
+  <link rel="stylesheet" href="/assets/styles.css">
+</head>
+<body>
+  <div class="wrap">
+    <header class="hero">
+      <div class="badge">Registration received</div>
+      <h1>Thank you</h1>
+      <p class="lead">Your place request was accepted. If Webtzm redirected here with a submission id, it appears below. Keep any email receipt — it may include your record reference for later changes.</p>
+      <p id="sub-id" class="note">Checking URL…</p>
+      <nav class="nav"><a href="/">Back to event</a></nav>
+    </header>
+  </div>
+  <script>
+    const q = new URLSearchParams(location.search);
+    const id = q.get('webtzm_submission');
+    document.getElementById('sub-id').textContent = id
+      ? ('Submission reference: ' + id)
+      : 'No webtzm_submission query parameter on this URL (in-form confirmation may have been used instead).';
+  </script>
+</body>
+</html>

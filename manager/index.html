@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Event manager — ACS Dialogue</title>
+  <link rel="stylesheet" href="/assets/styles.css">
+</head>
+<body>
+  <div class="wrap">
+    <header class="hero">
+      <div class="badge">Managers only · demo gate</div>
+      <h1>Event manager dashboard</h1>
+      <p class="lead">Fetch registrations from Webtzm, update attendance on the managed Sheet, and issue a PDF certificate (Google Doc → PDF via Webtzm).</p>
+      <nav class="nav"><a href="/">Public event page</a></nav>
+    </header>
+
+    <section class="card" id="gate-card">
+      <h2>Unlock dashboard</h2>
+      <p>Simple shared passphrase for this demo (not production auth).</p>
+      <label for="gate">Passphrase</label>
+      <input id="gate" type="password" autocomplete="current-password" style="width:100%;max-width:20rem;background:#0f1722;color:#e8eef5;border:1px solid #2a3a4f;border-radius:8px;padding:0.55rem 0.7rem;font:inherit">
+      <div><button class="primary" type="button" id="gate-btn">Unlock</button></div>
+      <p id="gate-err" class="err hidden">Incorrect passphrase.</p>
+    </section>
+
+    <div id="dash" class="hidden">
+      <section class="card">
+        <h2>Registrations (Webtzm Fetch)</h2>
+        <div class="toolbar">
+          <button class="secondary" type="button" id="refresh-btn">Refresh roster</button>
+          <span id="fetch-status" class="note" style="border:0;margin:0;padding:0.4rem 0"></span>
+        </div>
+        <div style="overflow-x:auto">
+          <table class="roster" id="roster">
+            <thead>
+              <tr>
+                <th>Name</th><th>Email</th><th>Track</th><th>Attendance</th><th>Record ID</th><th>Actions</th>
+              </tr>
+            </thead>
+            <tbody></tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="card" style="margin-top:1.25rem">
+        <h2>Update attendance (Webtzm Update)</h2>
+        <p>Uses the Update workflow keyed on <code>webtzm_id</code>. Blank fields are left unchanged.</p>
+        <div id="attendance-form-slot"></div>
+      </section>
+
+      <section class="card" style="margin-top:1.25rem">
+        <h2>Issue PDF certificate (Webtzm PDF → Google Drive)</h2>
+        <p>Separate Create workflow with PDF output. Prefills from the selected roster row. The PDF appears in the workflow’s Google Drive folder.</p>
+        <div id="certificate-form-slot"></div>
+      </section>
+    </div>
+
+    <footer>Demo gate is intentional for this showcase. Prefer Netlify Identity or a server Fetch key for real events.</footer>
+  </div>
+  <script src="/assets/config.js"></script>
+  <script src="/assets/manager.js"></script>
+</body>
+</html>

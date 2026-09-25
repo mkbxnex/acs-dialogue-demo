@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Secular Dialogue Evening — ACS Singapore</title>
+  <meta name="description" content="Public registration for an Atheist Community of Singapore dialogue evening. Demo powered by Webtzm.">
+  <link rel="stylesheet" href="/assets/styles.css">
+</head>
+<body>
+  <div class="wrap">
+    <header class="hero">
+      <div class="badge">Community event · Singapore</div>
+      <h1 id="event-title">Secular Dialogue Evening</h1>
+      <p class="lead">An open evening hosted with the Atheist Community of Singapore: thoughtful conversation on living well without religion, welcoming believers, seekers, and non-believers alike. Registration is free; places are limited.</p>
+      <div class="meta">
+        <div><strong>When</strong><br><span id="event-date">—</span></div>
+        <div><strong>Where</strong><br><span id="event-venue">—</span></div>
+        <div><strong>Format</strong><br>Panel + open floor · English</div>
+      </div>
+      <nav class="nav" aria-label="Page">
+        <a href="#register">Register</a>
+        <a href="#about">About the evening</a>
+        <a href="/manager/">Event managers</a>
+      </nav>
+    </header>
+
+    <div class="grid two">
+      <section class="card" id="about">
+        <h2>About the evening</h2>
+        <p>Short panel remarks, then facilitated dialogue. Topics may include ethics without dogma, community care, and how secular groups show up in Singapore’s multi-faith public square.</p>
+        <p>This page is also a <strong>live product demonstration</strong> of Webtzm: registration lands in Google Sheets, managers Fetch the roster, Update attendance, and issue a PDF certificate from a Google Doc template.</p>
+        <div class="note">Fictional demo event for product showcase. Not an official ACS announcement unless ACS chooses to reuse it.</div>
+      </section>
+
+      <section class="card" id="register">
+        <h2>Register to attend</h2>
+        <p>Submit once. You will get a confirmation on-page (and email if enabled). Managers use your record ID for attendance and certificates.</p>
+        <div id="register-form-slot">
+          <p class="err">Registration form not wired yet — Webtzm Create workflow pending.</p>
+        </div>
+      </section>
+    </div>
+
+    <footer>
+      Demo site for Webtzm full-feature showcase · Forms processed by <a href="https://webtzm.com" rel="noopener">Webtzm</a> · Hosted on Netlify
+    </footer>
+  </div>
+  <script src="/assets/config.js"></script>
+  <script>
+    const c = window.ACS_CONFIG;
+    document.getElementById('event-title').textContent = c.eventTitle;
+    document.getElementById('event-date').textContent = c.eventDate;
+    document.getElementById('event-venue').textContent = c.eventVenue;
+  </script>
+  <script src="/assets/register-embed.js"></script>
+</body>
+</html>
