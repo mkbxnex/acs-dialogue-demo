@@ -101,11 +101,11 @@
     if (!document.getElementById('wtzm-enhance')) {
       const link = document.createElement('link');
       link.rel = 'stylesheet';
-      link.href = 'https://webtzm.com/assets/styles/public-form.css';
+      link.href = 'https://webtzm.com/assets/styles/public-form.css?v=20260925-public-form-12';
       document.head.appendChild(link);
       const s = document.createElement('script');
       s.id = 'wtzm-enhance';
-      s.src = 'https://webtzm.com/assets/enhance.js';
+      s.src = 'https://webtzm.com/assets/enhance.js?v=20260925-public-form-12';
       s.defer = true;
       document.body.appendChild(s);
     }

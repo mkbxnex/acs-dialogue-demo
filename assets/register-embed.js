@@ -2,7 +2,10 @@
   const c = window.ACS_CONFIG || {};
   const slot = document.getElementById('register-form-slot');
   if (!slot) return;
-  if (!c.registerFormId) return;
+  if (!c.registerFormId) {
+    slot.innerHTML = '<p class="err">Registration form not wired yet.</p>';
+    return;
+  }
   slot.innerHTML = `
 <form class="wtzm-form" action="https://webtzm.com/submit" method="post"
   data-webtzm-form="${c.registerFormId}"
@@ -46,7 +49,25 @@
   </div>
   <p data-wtzm-send-status role="status" aria-live="polite"></p>
   <button class="wtzm-submit" type="submit">Submit registration</button>
-</form>
-<link rel="stylesheet" href="https://webtzm.com/assets/styles/public-form.css">
-<script src="https://webtzm.com/assets/enhance.js" defer></script>`;
+</form>`;
+
+  function ensureStylesheet(href) {
+    if ([...document.styleSheets].some((s) => s.href && s.href.includes(href.split('?')[0].split('/').pop()))) return;
+    const link = document.createElement('link');
+    link.rel = 'stylesheet';
+    link.href = href;
+    document.head.appendChild(link);
+  }
+  function ensureScript(src, id) {
+    if (id && document.getElementById(id)) return;
+    if ([...document.scripts].some((s) => s.src && s.src.indexOf(src.split('?')[0]) !== -1)) return;
+    const s = document.createElement('script');
+    if (id) s.id = id;
+    s.src = src;
+    s.defer = true;
+    document.body.appendChild(s);
+  }
+  const v = '20260925-public-form-12';
+  ensureStylesheet('https://webtzm.com/assets/styles/public-form.css?v=' + v);
+  ensureScript('https://webtzm.com/assets/enhance.js?v=' + v, 'wtzm-enhance-public');
 })();
